@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { checkAuth, checkAdmin } = require('../middleware/index')
 
 const { getEnemyKillEvents, getEnemyKillEventsById, getEnemyKillsByType, getEnemyKillsByTypeAndCharacter, createEnemyDefeatedRecord, modifyEnemyDefeatedRecord, deleteEnemyDefeatedRegistry} = require('../controllers/enemy')
 
