@@ -6,6 +6,7 @@ const Zone = require('../api/models/zone')
 const Enemy = require('../api/models/enemy')
 const Chest_event = require('../api/models/chest_open_event')
 const Enemy_event = require('../api/models/enemy_defeat_event')
+const Milestone = require('../api/models/milestone')
 const Milestone_event = require('../api/models/milestone_reached_event')
 
 function addRelationsToModels() {
@@ -22,6 +23,9 @@ function addRelationsToModels() {
 
 	   Character.hasMany(Milestone_event)
 	   Milestone_event.belongsTo(Character)
+
+	   Milestone.hasMany(Milestone_event)
+	   Milestone_event.belongsTo(Milestone)
 
 	   //Chest Event
 

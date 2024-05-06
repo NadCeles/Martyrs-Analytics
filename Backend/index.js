@@ -9,12 +9,17 @@ const morgan = require('morgan')
 async function checkAndSyncMySQL() {
 	await checkConnection()
 	addRelationsToModels()
-	await syncModels('force')
+	await syncModels('alter')
 }
+
+const corsOptions = {
+    credentials: true,
+    origin: ['http://localhost:5173', 'http://localhost:8000'] // Whitelist the domains you want to allow
+};
 
 function initializeAndListenWithExpress() {
 	const app = express()
-		.use(cors())
+		.use(cors(corsOptions))
 		.use(morgan('dev'))
 		.use(express.json())
 		.use('/api', require('./api/routes'))
