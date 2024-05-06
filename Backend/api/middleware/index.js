@@ -22,7 +22,6 @@ const checkAuth = (req, res, next) => {
 }
 
 const checkAdmin = (req, res, next) => {
-  console.log(res.locals)
   if (res.locals.user.role !== 'Admin') {
     return res.status(401).send('Not authorized!')
   } else {
