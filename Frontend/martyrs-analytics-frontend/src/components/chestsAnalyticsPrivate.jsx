@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { Bar } from 'react-chartjs-2';
 import { getPrivateChestsOpened, getUserCharacters } from "../services/analytics";
+import styles from "../pages/Analytics/analytics-page.module.css";
 
 ChartJS.register(
     CategoryScale,
@@ -52,7 +53,7 @@ export const ChestsAnalyticsPrivate = () => {
 
     const makeCharacterButton = (data) => {
         return (
-            <button
+            <button className={styles.buttonSelector}
                 key={"character-button-" + data.id}
                 onClick={() => clickCharacterButton(data.id)}
             >
@@ -63,37 +64,57 @@ export const ChestsAnalyticsPrivate = () => {
 
     return (
         <>
-            <section id="character-button-container">
+            <section className={styles.cardSelector} id="character-button-container">
+                <h1>Characters</h1>
                 { Array.isArray(characters) ? characters.map(makeCharacterButton, this) : <p>Error characters not accesible</p>}
             </section>
-            <section id="chest-analytics-private-section">
-                <Bar
-                    options={{
-                        indexAxis: 'y',
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'left'
+            <div className={styles.card}>
+                <h1>Opened Chests by Character</h1>
+                <section className={styles.chestPublic} id="chest-analytics-private-section">
+                    <Bar
+                        options={{
+                            indexAxis: 'y',
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                    position: 'left'
+                                },
+                                title: {
+                                    display: false,
+                                    text: 'Opened Chests By Character'
+                                }
                             },
-                            title: {
-                                display: true,
-                                text: 'Opened Chests By Character'
+                            scales:{
+                                y:{
+                                    ticks:{
+                                        color: 'rgba(255, 255, 255, 1)',
+                                        font:{
+                                            size: 20,
+                                        }
+                                    },
+                                },
+                                x:{
+                                    ticks:{
+                                        color:'rgba(255, 255, 255, 1)',
+                                    }
+                                }
                             }
-                        }
-                    }}
-                    data={{
-                        labels: labels,
-                        datasets: [
-                            {
-                                data: data,
-                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                minBarLength: 10
-                            }
-                        ]
-                    }}
-                >
-                </Bar>
-            </section>
+                        }}
+                        data={{
+                            labels: labels,
+                            datasets: [
+                                {
+                                    data: data,
+                                    backgroundColor: 'rgba(241, 162, 8, 0.9)',
+                                    barThickness:40,
+                                }
+                            ]
+                        }}
+                    >
+                    </Bar>
+                </section>
+            </div>
         </>
     )
 }

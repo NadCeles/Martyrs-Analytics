@@ -16,16 +16,18 @@ export const Landing = () => {
                 <div className={styles.container}>
                     <article id="trailer-section" className={styles.card}>
                         <h1>SURVIVE THE DUNGEON</h1>
-                        <iframe className={styles.video} src="https://www.youtube.com/embed/bGhW1PTSEpk?si=jaGQVpb2nMa8yJ0M" 
+                        <iframe className={styles.video} src="https://www.youtube.com/embed/bGhW1PTSEpk?si=jaGQVpb2nMa8yJ0M"
                         title="YouTube video player" 
                         frameBorder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         referrerPolicy="strict-origin-when-cross-origin" 
                         allowFullscreen>
                         </iframe>
+                        <p>(Mockup external content, only for web design purposes)</p>
                     </article>
                     <article id="game-section" className={styles.card}>
-                        <h1>NOT A WEIRD TITLE</h1>
+                        <h1>GAME INFO</h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </article>
                     <article id="media-section" className={styles.card}>
@@ -38,6 +40,7 @@ export const Landing = () => {
                             <img src={image5} className={styles.image}></img>
                             <img src={image6} className={styles.image}></img>
                         </div>
+                        <p>(Mockup external content, only for web design purposes)</p>
                     </article>
                     <article id="newsletter-section" className={styles.card}>
                         <h1>JOIN THE NEWSLETTER</h1>

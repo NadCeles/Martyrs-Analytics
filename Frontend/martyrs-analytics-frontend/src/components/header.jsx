@@ -2,6 +2,8 @@ import { useState } from "react";
 import { isLogged } from "../services/auth"
 import { Link, useNavigate } from "react-router-dom"
 import styles from "./header.module.css"
+import martyrsLogo from "../assets/images/media/martyrs_logo.png"
+
 
 
 export const Header = () => {
@@ -18,7 +20,7 @@ export const Header = () => {
         <>
             <div className={styles.topBar}>
                 <Link to="/">
-                    <div className={styles.gameLogo} />
+                    <img src={martyrsLogo} className={styles.gameLogo}></img>
                 </Link>
                 <div className={styles.container}>
                     <Link to="/#trailer-section">
