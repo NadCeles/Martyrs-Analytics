@@ -1,8 +1,34 @@
-import { isLogged, login } from '../../services/auth'
-import { useNavigate } from "react-router-dom" 
+import { login } from '../../services/auth'
+import { Link, useNavigate } from "react-router-dom"
+import { Header } from "../../components/header";
+import { Footer } from "../../components/footer";
+import styles from "./login-page.module.css"
+
 
 export const Login = () => {
     const navigate = useNavigate();
+
+    function validateData(formData) {
+        let dataIsValid = true;
+        const email_regex = /\S+@\S+\.\S+/;
+        const errors = [];
+        if(!email_regex.test(formData.get("email"))) {
+            errors.push("Email is not valid")
+            dataIsValid &= false;
+        }
+        if(!formData.get("password")) {
+            errors.push("Password is missing");
+            dataIsValid &= false;
+        }
+        let alertString = "";
+        for(let i = 0;i < errors.length; i++) {
+            alertString += errors[i]+ "\n";
+        }
+        if(!dataIsValid) {
+            alert(alertString);
+        }
+        return dataIsValid;
+    }
 
     async function loginAction (e)  {
         e.preventDefault();
@@ -11,9 +37,11 @@ export const Login = () => {
         const formData = new FormData(form);
 
         try {
-            const response_data = await login(formData.get("email"), formData.get("password"));
-            localStorage.setItem("api_token", response_data.token);
-            navigate("/");
+            if(validateData(formData)) {
+                const response_data = await login(formData.get("email"), formData.get("password"));
+                localStorage.setItem("api_token", response_data.token);
+                navigate("/");
+            }
         }
         catch(error) {
             alert(error.message);
@@ -22,14 +50,27 @@ export const Login = () => {
 
     return (
         <>
-            <h1>Login</h1>
-            <form onSubmit={loginAction}>
-                <label for="email">Email</label>
-                <input name="email"></input>
-                <label for="password">Password</label>
-                <input name="password"></input>
-                <button type="submit">Log In</button>
-            </form>
+            <div className={styles.loginPage}>
+                <Header></Header>
+                <div className={styles.card}>
+                    <form className={styles.loginContainer} onSubmit={loginAction}>
+                        <div className={styles.loginInputContainer}>
+                            <label>
+                                Email
+                                <input name="email" type="text" className={styles.loginFormItem} />
+                            </label>
+                            <label>
+                                Password
+                                <input name="password" type="password" className={styles.loginFormItem} />
+                            </label>
+                        </div>
+                        <button type="submit" className={styles.loginButton}>Login</button>
+                        <Link to="/register" className={styles.loginButton}>Register</Link>
+                        
+                    </form>
+                </div>
+                <Footer></Footer>
+    		</div>
         </>
     );
 };

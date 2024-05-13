@@ -4,10 +4,12 @@ import { AdminPanel } from './pages/Admin/AdminPanelPage'
 import { Login } from './pages/Login/LoginPage'
 import { Register } from './pages/Register/RegisterPage'
 import { Profile } from './pages/Profile/ProfilePage'
-import { 
+import {
   createBrowserRouter,
-  RouterProvider
+  RouterProvider,
+  Navigate
 } from "react-router-dom";
+import ScrollToHashElement from './components/utils/scrolltohash'
 
 const router = createBrowserRouter([
   {
@@ -20,11 +22,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin-panel",
-    element: <AdminPanel></AdminPanel>
+    element: localStorage.getItem("api_token") ? <AdminPanel></AdminPanel> : <Navigate to="/" replace />
   },
   {
     path: "/login",
-    element: <Login></Login>
+    element: <Login></Login>,
   },
   {
     path: "/register",
@@ -32,13 +34,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <Profile></Profile>
+    element: localStorage.getItem("api_token") ? <Profile></Profile> : <Navigate to="/" replace />,
   }
 ])
 
 function App() {
   return (
-    <RouterProvider router={router}></RouterProvider>
+    <>
+      <RouterProvider router={router}>
+      </RouterProvider>
+    </>
+
   )
 }
 

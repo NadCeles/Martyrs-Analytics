@@ -1,0 +1,88 @@
+.analyticsPage {
+    background-color: #000;
+    width: 100vw;
+    height: 100%;
+    text-align: center;
+    font-size: 1.3em;
+    color: #fff;
+    font-family: Inter;
+    display:flex;
+    flex-direction: column;
+    align-content: space-between;
+    gap: 5vh
+}
+
+.container {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 5vh;
+    align-items: center;
+}
+
+.buttonContainer{
+    display:flex;
+    justify-content: center;
+    gap:1vw;
+}
+
+
+.buttonSelector {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+    width: 10vw;
+    border-radius: 5px;
+    background-color: #f1a208;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
+    height: 50vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 1vw;
+    padding-bottom: 2vw;
+    border-radius: 0px 15px 0px 15px;
+    background-color: #5fa9bd;
+    border: 5px solid rgb(241, 162, 8);
+}
+
+.cardSelector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
+    height: 20vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 1vw;
+    padding-bottom: 2vw;
+    border-radius: 0px 15px 0px 15px;
+    background-color: #5fa9bd;
+    border: 5px solid #f1a208;
+}
+
+.enemiesPublic{
+    width:30vw;
+    height:30vh;
+}
+
+.chestPublic{
+    width:30vw;
+    height:30vh;
+}
+
+.milestonePublic{
+    width:30vw;
+    height:30vh;
+}

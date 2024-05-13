@@ -11,6 +11,9 @@ import { useEffect, useState } from "react"
 import { Bar } from 'react-chartjs-2';
 import { isLogged } from "../services/auth"
 import { getPublicChestsOpened, getPublicCharacterCompletionPercentage } from "../services/analytics";
+import { ChestsAnalyticsPrivate } from './chestsAnalyticsPrivate';
+import { AnalyticsSignUpCallToAction } from '../components/analyticsSignUpCallToAction';
+import styles from "../pages/Analytics/analytics-page.module.css";
 
 ChartJS.register(
     CategoryScale,
@@ -62,61 +65,116 @@ export const ChestsAnalytics = () => {
 
     return (
         <>
-            <h1>Chests Opened</h1>
-            <section id="chests-analytics-public-first">
-                <Bar
-                    options={{
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'top'
+            <div className={styles.card}>    
+                <h1>Total Chest Opened</h1>
+                <section className={styles.chestPublic} id="chests-analytics-public-first">
+                    <Bar
+                        options={{
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                    position: 'top'
+                                },
+                                title: {
+                                    display: false,
+                                    text: 'Chests Opened Total',
+                                    color: 'rgba(255, 255, 255, 1)',
+                                    align: 'center',
+                                    font:{
+                                        size: 30
+                                    },
+                                }
                             },
-                            title: {
-                                display: false,
-                                text: 'Chests Opened Total'
-                            }
-                        }
-                    }}
-                    data={{
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: 'Chests Opened Total',
-                                data: data,
-                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                            }
-                        ]
-                    }}
-                >
-                </Bar>
-            </section>
-            <section id="chests-analytics-public-second">
-                <Bar
-                    options={{
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'top'
+                            scales:{
+                                y:{
+                                    ticks:{
+                                        color: 'rgba(255, 255, 255, 1)',
+                                        font:{
+                                            size: 20,
+                                        }
+                                    },
+                                },
+                                x:{
+                                    ticks:{
+                                        color:'rgba(255, 255, 255, 1)',
+                                        font:{
+                                            size: 15,
+                                        }
+                                    }
+                                }
                             },
-                            title: {
-                                display: false,
-                                text: 'Character Completion Percentage'
-                            }
-                        }
-                    }}
-                    data={{
-                        labels: completionLabels,
-                        datasets: [
-                            {
-                                label: 'Character Completion Percentage',
-                                data: completionData,
-                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                            }
-                        ]
-                    }}
-                >
-                </Bar>
-            </section>
+                        }}
+                        data={{
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Chests Opened Total',
+                                    data: data,
+                                    backgroundColor: 'rgba(241, 162, 8, 0.9)',
+                                    barThickness:40,
+                                }
+                            ]
+                        }}
+                    >
+                    </Bar>
+                </section>
+                </div>
+                <div className={styles.card}>
+                    <h1>Character Completion Percentage</h1>
+                    <section className={styles.chestPublic} id="chests-analytics-public-second">
+                        <Bar
+                            options={{
+                                responsive: true,
+                                plugins: {
+                                    legend: {
+                                        display:false,
+                                        position: 'top'
+                                    },
+                                    title: {
+                                        display: false,
+                                        text: 'Character Completion Percentage'
+                                    }
+                                },
+                                scales:{
+                                    y:{
+                                        ticks:{
+                                            color: 'rgba(255, 255, 255, 1)',
+                                            font:{
+                                                size: 20,
+                                            }
+                                        },
+                                    },
+                                    x:{
+                                        ticks:{
+                                            color:'rgba(255, 255, 255, 1)',
+                                            font:{
+                                                size: 15,
+                                            }
+                                        }
+                                    }
+                                },
+                            }}
+                            data={{
+                                labels: completionLabels,
+                                datasets: [
+                                    {
+                                        label: 'Character Completion Percentage',
+                                        data: completionData,
+                                        backgroundColor: 'rgba(241, 162, 8, 0.9)',
+                                        barThickness:40,
+                                    }
+                                ]
+                            }}
+                        >
+                        </Bar>
+                    </section>
+            </div>
+            {
+                loggedIn ?
+                    <ChestsAnalyticsPrivate></ChestsAnalyticsPrivate> :
+                    <AnalyticsSignUpCallToAction></AnalyticsSignUpCallToAction>
+            }
         </>
     )
 }

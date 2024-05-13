@@ -49,13 +49,22 @@ async function getOpenChests(req, res) {
 
 async function getOpenChestsByCharacter(req, res) {
     try {
-        const chest_events = await Chest_event.findAll({
-            where: {
-                characterId: req.params.character_id
-            }
-        })
-        if (chest_events) {
-            return res.status(200).json(chest_events)
+        const zones = await Zone.findAll();
+        const response = [];
+        for (let i = 0; i < zones.length; i++) {
+            const chests_opened = await Chest_event.findAndCountAll({
+                where: {
+                    zoneId: zones[i].id,
+                    characterId: req.params.character_id
+                }
+            })
+            response.push({
+                zone_name: zones[i].name,
+                opened_chests_count: chests_opened.count
+            })
+        }
+        if (response) {
+            return res.status(200).json(response)
         }
         else {
             return res.status(404).send('No chest event record was found by character id')

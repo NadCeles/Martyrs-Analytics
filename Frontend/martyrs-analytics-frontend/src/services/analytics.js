@@ -35,7 +35,7 @@ export async function getMilestonesReachedByUser(characterId, milestoneType)
         const response = await api.get('milestone-event/milestones-by-user' + '/' + characterId + '/' + milestoneType, {
             headers: {
                 Authorization: localStorage.getItem("api_token")
-            } 
+            }
         });
         return response.data;
     }
@@ -117,6 +117,20 @@ export async function getPublicChestsOpened() {
 export async function getPublicCharacterCompletionPercentage() {
     try {
         const response = await api.get('chest-event/opened-chest-completion-percentages')
+        return response.data;
+    }
+    catch(error) {
+        throw new Error(error);
+    }
+}
+
+export async function getPrivateChestsOpened(characterId) {
+    try {
+        const response = await api.get('chest-event/opened-chest-by-character/' + characterId , {
+            headers: {
+                Authorization: localStorage.getItem("api_token")
+            }
+        })
         return response.data;
     }
     catch(error) {

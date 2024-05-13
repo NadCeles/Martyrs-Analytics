@@ -1,0 +1,37 @@
+
+.container{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5vh;
+}
+
+.gameLogo {
+    height: 10vh;
+    width: 10vw;
+    background-color: #d9d9d9;
+}
+
+.loginRegisterButton {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: 15vw;
+    border-radius: 5px;
+    background-color: #f1a208;
+}
+
+.topBar {
+    width: 100vw;
+    height: 15vh;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.3em;
+    position: relative;
+    top: 0%;
+    background-color: #3f6d79;
+    font-family: Inter;
+}

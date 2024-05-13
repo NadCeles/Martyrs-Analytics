@@ -48,11 +48,9 @@ const getUserCharacters = async (req, res) => {
       if (err) {
           console.log(err);
           return res.send('Token not valid')
-      } 
+      }
 
-      console.log(result);
-
-      const user = await User.findOne(req.body, {
+      const user = await User.findOne({
         where: {
           email: result.email
         }
@@ -61,8 +59,7 @@ const getUserCharacters = async (req, res) => {
       if (!user) {
         console.log('User doesnt exists');
         return res.send('Token not valid')
-      } 
-
+      }
 
       const characters = await Character.findAll({
         where: {

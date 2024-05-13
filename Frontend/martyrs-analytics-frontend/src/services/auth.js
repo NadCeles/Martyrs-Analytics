@@ -47,7 +47,7 @@ export async function getUserInfoByToken() {
     }
 }
 
-export async function updateUserInfo(email, name, surname, gender, birthdate) {
+export async function updateUserInfo(name, surname, gender, birthdate) {
     try {
         const headers = {
             headers: {
@@ -55,7 +55,6 @@ export async function updateUserInfo(email, name, surname, gender, birthdate) {
             }
         }
         const updateUser = await api.patch("user", {
-            email: email,
             name: name,
             surname: surname,
             gender: gender,

@@ -13,6 +13,7 @@ import { isLogged } from '../services/auth';
 import { AnalyticsSignUpCallToAction } from "./analyticsSignUpCallToAction";
 import { getMilestonePublicReachedPercentages } from '../services/analytics';
 import { MilestonesAnalyticsPrivate } from './milestonesAnalyticsPrivate';
+import style from "../pages/Analytics/analytics-page.module.css";
 
 ChartJS.register(
     CategoryScale,
@@ -95,114 +96,172 @@ export const MilestonesAnalytics = () => {
 
     return (
         <>
-            <h1>Milestones Stats</h1>
-            <button onClick={onClickedZone}>Zone</button>
-            <button onClick={onClickedBoss}>Boss</button>
-            <button onClick={onClickedUnique}>Unique Items</button>
-            <section id="milestones-analytics-public">
-                {
-                    zoneClicked ?
-                        <Bar
-                            options={{
-                                indexAxis: 'y',
-                                elements: {
-                                    bar: {
-                                        borderWidth: 1,
+             <div className={style.cardSelector}>
+                    <h1>Milestone Categories</h1>
+                    <div className={style.buttonContainer}>
+                        <button className={style.buttonSelector} onClick={onClickedZone}>Zone</button>
+                        <button className={style.buttonSelector} onClick={onClickedBoss}>Boss</button>
+                        <button className={style.buttonSelector} onClick={onClickedUnique}>Unique Items</button>
+                    </div>
+            </div> 
+            <div className={style.card}>    
+                <h1>Milestones Stats</h1>
+                <section className={style.milestonePublic} id="milestones-analytics-public">
+                    {
+                        zoneClicked ?
+                            <Bar
+                                options={{
+                                    indexAxis: 'y',
+                                    elements: {
+                                        bar: {
+                                            borderWidth: 1,
+                                        },
                                     },
-                                },
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        position: 'left'
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            display:false,
+                                            position: 'left'
+                                        },
+                                        title: {
+                                            display: false,
+                                            text: 'Chart.js Bar Chart'
+                                        }
                                     },
-                                    title: {
-                                        display: false,
-                                        text: 'Chart.js Bar Chart'
+                                    scales:{
+                                        y:{
+                                            ticks:{
+                                                color: 'rgba(255, 255, 255, 1)',
+                                                font:{
+                                                    size: 20,
+                                                }
+                                            },
+                                        },
+                                        x:{
+                                            ticks:{
+                                                color:'rgba(255, 255, 255, 1)',
+                                            }
+                                        }
                                     }
-                                }
-                            }}
-                            data={{
-                                labels: zoneLabels,
-                                datasets: [
-                                    {
-                                        label: 'Zones Milestones',
-                                        data: zoneData,
-                                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                    }
-                                ]
-                            }}
-                        >
-                        </Bar> : null
-                }
-                {
-                    bossClicked ?
-                        <Bar
-                            options={{
-                                indexAxis: 'y',
-                                elements: {
-                                    bar: {
-                                        borderWidth: 1,
+                                }}
+                                data={{
+                                    labels: zoneLabels,
+                                    datasets: [
+                                        {
+                                            label: 'Zones Milestones',
+                                            data: zoneData,
+                                            backgroundColor: 'rgba(241, 162, 8, 0.9)',
+                                            barThickness:40,
+                                        }
+                                    ]
+                                }}
+                            >
+                            </Bar> : null
+                    }
+                    {
+                        bossClicked ?
+                            <Bar
+                                options={{
+                                    indexAxis: 'y',
+                                    elements: {
+                                        bar: {
+                                            borderWidth: 1,
+                                        },
                                     },
-                                },
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        position: 'left'
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            display:false,
+                                            position: 'left'
+                                        },
+                                        title: {
+                                            display: false,
+                                            text: 'Chart.js Bar Chart'
+                                        }
                                     },
-                                    title: {
-                                        display: false,
-                                        text: 'Chart.js Bar Chart'
+                                    scales:{
+                                        y:{
+                                            ticks:{
+                                                color: 'rgba(255, 255, 255, 1)',
+                                                font:{
+                                                    size: 20,
+                                                }
+                                            },
+                                        },
+                                        x:{
+                                            ticks:{
+                                                color:'rgba(255, 255, 255, 1)',
+                                            }
+                                        }
                                     }
-                                }
-                            }}
-                            data={{
-                                labels: bossLabels,
-                                datasets: [
-                                    {
-                                        label: 'Bosses Milestones',
-                                        data: bossData,
-                                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                    }
-                                ]
-                            }}
-                        >
-                        </Bar> : null
-                }
-                {
-                    uniqueItemClicked ?
-                        <Bar
-                            options={{
-                                indexAxis: 'y',
-                                elements: {
-                                    bar: {
-                                        borderWidth: 1,
+                                }}
+                                data={{
+                                    labels: bossLabels,
+                                    datasets: [
+                                        {
+                                            label: 'Bosses Milestones',
+                                            data: bossData,
+                                            backgroundColor: 'rgba(241, 162, 8, 0.9)',
+                                            barThickness:40,
+                                        }
+                                    ]
+                                }}
+                            >
+                            </Bar> : null
+                    }
+                    {
+                        uniqueItemClicked ?
+                            <Bar
+                                options={{
+                                    indexAxis: 'y',
+                                    elements: {
+                                        bar: {
+                                            borderWidth: 1,
+                                        },
                                     },
-                                },
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        position: 'left'
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            display: false,
+                                            position: 'left'
+                                        },
+                                        title: {
+                                            display: false,
+                                            text: 'Chart.js Bar Chart'
+                                        }
                                     },
-                                    title: {
-                                        display: false,
-                                        text: 'Chart.js Bar Chart'
+                                    scales:{
+                                        y:{
+                                            ticks:{
+                                                color: 'rgba(255, 255, 255, 1)',
+                                                font:{
+                                                    size: 20,
+                                                }
+                                            },
+                                        },
+                                        x:{
+                                            ticks:{
+                                                color:'rgba(255, 255, 255, 1)',
+                                            }
+                                        }
                                     }
-                                }
-                            }}
-                            data={{
-                                labels: uniqueItemLabels,
-                                datasets: [
-                                    {
-                                        label: 'Unique Milestones',
-                                        data: uniqueItemData,
-                                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                    }
-                                ]
-                            }}
-                        >
-                        </Bar> : null
-                }
-            </section>
+                                }}
+                                data={{
+                                    labels: uniqueItemLabels,
+                                    datasets: [
+                                        {
+                                            label: 'Unique Milestones',
+                                            data: uniqueItemData,
+                                            backgroundColor: 'rgba(241, 162, 8, 0.9)',
+                                            barThickness:40,
+                                        }
+                                    ]
+                                }}
+                            >
+                            </Bar> : null
+                    }
+                </section>
+            </div>   
             {loggedIn ?
                 <MilestonesAnalyticsPrivate></MilestonesAnalyticsPrivate> :
                 <AnalyticsSignUpCallToAction></AnalyticsSignUpCallToAction>

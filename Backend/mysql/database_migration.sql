@@ -1,33 +1,57 @@
-INSERT INTO users VALUES('1', 'Helena', 'Frenchwoman', 'helena@gmail.com', '$2b$10$4TJUi3UoDGlkdd0qxW2YdOKz/ERXX8QO8CXbSm4Hx6N7M8p2GRL.e', 'User', 'test-steam-id-0', 'Woman', '1990-09-23 00:00:00', '2024-05-02 11:39:36')
-INSERT INTO users VALUES('2', 'Nadia', 'Frenchwoman', 'nadia@gmail.com', '$2b$10$4TJUi3UoDGlkdd0qxW2YdOKz/ERXX8QO8CXbSm4Hx6N7M8p2GRL.e', 'User', 'test-steam-id-1', 'Woman', '1990-09-23 00:00:00', '2024-05-02 11:39:36')
-INSERT INTO users VALUES('3', 'Teresa', 'Frenchwoman', 'teresa@gmail.com', '$2b$10$4TJUi3UoDGlkdd0qxW2YdOKz/ERXX8QO8CXbSm4Hx6N7M8p2GRL.e', 'User', 'test-steam-id-2', 'Woman', '1990-09-23 00:00:00', '2024-05-02 11:39:36')
-INSERT INTO characters VALUES('1', 'Frieren', 'test-steam-id-0', '1998-01-23 12:45:56')
-INSERT INTO characters VALUES('2', 'Senshi', 'test-steam-id-1', '1998-01-23 12:45:56')
-INSERT INTO zones VALUES(1, 'toxic swamp', '1998-01-20 11:32:23');
-INSERT INTO zones VALUES(2, 'the altar', '1998-01-20 11:32:23');
-INSERT INTO zones VALUES(3, 'swamp', '1998-01-20 11:32:23');
-INSERT INTO zones VALUES(4, 'the old forest', '1998-01-20 11:32:23');
-INSERT INTO zones VALUES(5, 'the dungeon', '1998-01-20 11:32:23');
-INSERT INTO milestones VALUES(1, 'Zone', 'Toxic Swamp Reached', '1998-01-23 12:45:56')
-INSERT INTO milestones VALUES(2, 'Zone', 'The Altar Reached', '1998-01-23 12:45:56')
-INSERT INTO milestones VALUES(3, 'Boss', 'Slime Defeat!', '1998-01-23 12:45:56')
-INSERT INTO milestones VALUES(4, 'Boss', 'Slain The Lady of Pain', '1998-01-23 12:45:56')
-INSERT INTO milestones VALUES(5, 'Unique Item', 'The Longsword', '1998-01-23 12:45:56')
-INSERT INTO enemies VALUES (1,'slime',1,'The simple life of a slime','1998-01-23 12:45:56');
-INSERT INTO enemies VALUES (2,'lady of pain',1,'With a heart made of razors','1998-01-23 12:45:56');
-INSERT INTO items VALUES(1, 'potion', '64', 'Empty', '1998-01-21 14:39:53');
-INSERT INTO items VALUES(2, 'longsword', '64', 'Empty', '1998-01-21 14:39:53');
+INSERT INTO users VALUES('1', 'Helena', 'Frenchwoman', 'helena@gmail.com', '$2b$10$4TJUi3UoDGlkdd0qxW2YdOKz/ERXX8QO8CXbSm4Hx6N7M8p2GRL.e', 'User', 'test-steam-id-0', 'Woman', '1990-09-23 00:00:00', '2024-05-02 11:39:36');
+INSERT INTO users VALUES('2', 'Nadia', 'Frenchwoman', 'nadia@gmail.com', '$2b$10$4TJUi3UoDGlkdd0qxW2YdOKz/ERXX8QO8CXbSm4Hx6N7M8p2GRL.e', 'User', 'test-steam-id-1', 'Woman', '1990-09-23 00:00:00', '2024-05-02 11:39:36');
+INSERT INTO users VALUES('3', 'Teresa', 'Frenchwoman', 'teresa@gmail.com', '$2b$10$4TJUi3UoDGlkdd0qxW2YdOKz/ERXX8QO8CXbSm4Hx6N7M8p2GRL.e', 'User', 'test-steam-id-2', 'Woman', '1990-09-23 00:00:00', '2024-05-02 11:39:36');
+INSERT INTO users VALUES('4', 'GameDemoUser', 'Frenchwoman', 'game@gmail.com', '$2b$10$4TJUi3UoDGlkdd0qxW2YdOKz/ERXX8QO8CXbSm4Hx6N7M8p2GRL.e', 'User', 'test-steam-id-3', 'Woman', '1990-09-23 00:00:00', '2024-05-02 11:39:36');
+INSERT INTO users VALUES('5', 'Admin', 'Admin', 'admin@gmail.com', '$2b$10$4TJUi3UoDGlkdd0qxW2YdOKz/ERXX8QO8CXbSm4Hx6N7M8p2GRL.e', 'Admin', 'test-steam-id-10', 'Woman', '1990-09-23 00:00:00', '2024-05-02 11:39:36');
+INSERT INTO characters VALUES('1', 'Glory', 'test-steam-id-0', '1998-01-23 12:45:56');
+INSERT INTO characters VALUES('2', 'Frieren', 'test-steam-id-1', '1998-01-23 12:45:56');
+INSERT INTO characters VALUES('3', 'Senshi', 'test-steam-id-2', '1998-01-23 12:45:56');
+INSERT INTO characters VALUES('4', 'Morrigan', 'test-steam-id-3', '1998-01-23 12:45:56');
+INSERT INTO zones VALUES(1, 'Toxic swamp', '1998-01-20 11:32:23');
+INSERT INTO zones VALUES(2, 'The altar', '1998-01-20 11:32:23');
+INSERT INTO zones VALUES(3, 'The old forest', '1998-01-20 11:32:23');
+INSERT INTO zones VALUES(4, 'The dungeon', '1998-01-20 11:32:23');
+INSERT INTO milestones VALUES(1, 'Zone', 'Toxic Swamp Reached', '1998-01-23 12:45:56');
+INSERT INTO milestones VALUES(2, 'Zone', 'The Altar Reached', '1998-01-23 12:45:56');
+INSERT INTO milestones VALUES(3, 'Boss', 'Slime Defeat!', '1998-01-23 12:45:56');
+INSERT INTO milestones VALUES(4, 'Boss', 'Slain The Lady of Pain', '1998-01-23 12:45:56');
+INSERT INTO milestones VALUES(5, 'Unique Item', 'The Longsword', '1998-01-23 12:45:56');
+INSERT INTO enemies VALUES (1,'Zombie',1,'Rotten Flesh','1998-01-23 12:45:56');
+INSERT INTO enemies VALUES (2,'Lady of pain',1,'With a heart made of razors','1998-01-23 12:45:56');
+INSERT INTO enemies VALUES (3,'Slime',1,'The simple life of a slime','1998-01-23 12:45:56');
+INSERT INTO items VALUES(1, 'Potion', '64', 'Empty', '1998-01-21 14:39:53');
+INSERT INTO items VALUES(2, 'Longsword', '64', 'Empty', '1998-01-21 14:39:53');
 INSERT INTO chests VALUES(1, '1998-02-20 10:34:43', 1, 1);
-INSERT INTO characters VALUES (1,'Bob','test-steam-id-0','1998-01-23 12:45:56');
+INSERT INTO chests VALUES(2, '1998-02-20 10:34:43', 1, 2);
+INSERT INTO chests VALUES(3, '1998-02-20 10:34:43', 2, 1);
+INSERT INTO chests VALUES(4, '1998-02-20 10:34:43', 2, 2);
+INSERT INTO chests VALUES(5, '1998-02-20 10:34:43', 3, 1); 
+INSERT INTO chests VALUES(6, '1998-02-20 10:34:43', 3, 2);
+INSERT INTO chests VALUES(7, '1998-02-20 10:34:43', 4, 1); 
+INSERT INTO chests VALUES(8, '1998-02-20 10:34:43', 4, 2); 
+INSERT INTO chests VALUES(9, '1998-02-20 10:34:43', 4, 1);
+INSERT INTO chests VALUES(10, '1998-02-20 10:34:43', 4, 2);
+INSERT INTO chests VALUES(11, '1998-02-20 10:34:43', 4, 1);
+INSERT INTO chests VALUES(12, '1998-02-20 10:34:43', 1, 1);
 INSERT INTO enemy_events VALUES (1,'test-steam-id-0',5,'1998-01-23 12:45:56',1,1);
 INSERT INTO enemy_events VALUES (2,'test-steam-id-0',5,'1998-01-23 12:45:56',1,1);
-INSERT INTO enemy_events VALUES (3,'test-steam-id-1',5,'1998-01-23 12:45:56',1,1);
-INSERT INTO enemy_events VALUES (4,'test-steam-id-1',5,'1998-01-23 12:45:56',1,1);
+INSERT INTO enemy_events VALUES (3,'test-steam-id-0',5,'1998-01-23 12:45:56',1,1);
+INSERT INTO enemy_events VALUES (4,'test-steam-id-0',5,'1998-01-23 12:45:56',1,1);
+INSERT INTO enemy_events VALUES (5,'test-steam-id-0',5,'1998-01-23 12:45:56',1,2);
+INSERT INTO enemy_events VALUES (6,'test-steam-id-1',5,'1998-01-23 12:45:56',2,1);
+INSERT INTO enemy_events VALUES (7,'test-steam-id-1',5,'1998-01-23 12:45:56',2,1);
+INSERT INTO enemy_events VALUES (8,'test-steam-id-1',5,'1998-01-23 12:45:56',2,1);
+INSERT INTO enemy_events VALUES (9,'test-steam-id-1',5,'1998-01-23 12:45:56',2,2);
 INSERT INTO milestone_events VALUES (1, 'test-steam-id-0','1998-01-23 12:45:56',1,1);
-INSERT INTO milestone_events VALUES (2, 'test-steam-id-0','1998-01-23 12:45:56',1,1);
-INSERT INTO milestone_events VALUES (3, 'test-steam-id-1','1998-01-23 12:45:56',1,1);
-INSERT INTO milestone_events VALUES (4, 'test-steam-id-1','1998-01-23 12:45:56',1,1);
+INSERT INTO milestone_events VALUES (2, 'test-steam-id-0','1998-01-23 12:45:56',1,2);
+INSERT INTO milestone_events VALUES (3, 'test-steam-id-0','1998-01-23 12:45:56',1,3);
+INSERT INTO milestone_events VALUES (4, 'test-steam-id-0','1998-01-23 12:45:56',1,4);
+INSERT INTO milestone_events VALUES (5, 'test-steam-id-0','1998-01-23 12:45:56',1,1);
+INSERT INTO milestone_events VALUES (6, 'test-steam-id-1','1998-01-23 12:45:56',2,2);
 INSERT INTO chest_events VALUES(1, 'test-steam-id-0','1998-01-25 14:39:53', 1, 1, 1, 1);
 INSERT INTO chest_events VALUES(2, 'test-steam-id-0','1998-01-25 14:39:53', 1, 1, 1, 1);
-INSERT INTO chest_events VALUES(3, 'test-steam-id-1','1998-01-25 14:39:53', 1, 1, 1, 1);
-INSERT INTO chest_events VALUES(4, 'test-steam-id-1','1998-01-25 14:39:53', 1, 1, 1, 1);
+INSERT INTO chest_events VALUES(3, 'test-steam-id-1','1998-01-25 14:39:53', 2, 1, 1, 1);
+INSERT INTO chest_events VALUES(4, 'test-steam-id-1 ','1998-01-25 14:39:53', 2, 1, 1, 1);
+INSERT INTO chest_events VALUES(5, 'test-steam-id-2 ','1998-01-25 14:39:53', 2, 8, 4, 2);
+INSERT INTO chest_events VALUES(6, 'test-steam-id-2 ','1998-01-25 14:39:53', 2, 6, 3, 2);
+INSERT INTO chest_events VALUES(7, 'test-steam-id-2','1998-01-25 14:39:53', 3, 6, 3, 2);

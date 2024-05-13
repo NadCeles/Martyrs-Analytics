@@ -1,0 +1,38 @@
+.footer {
+    display:flex;
+    justify-content: space-around;
+    gap: 5vw;
+    font-size: 1.3em;
+    position: relative;
+    align-items: center;
+    height: 15vh;
+    width: 100vw;
+    bottom: 0%;
+    background-color: #3f6d79;
+    color: white;
+}
+
+.socialContainer{
+    display:flex;
+    justify-content: space-evenly;
+    gap: 3vw;
+}
+
+.container {
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3vw;
+}
+
+.footerSocial {
+    height: 5vw;
+    width: 5vw;
+    border-radius: 50%;
+}
+.footerLogo {
+    height: 5vw;
+    width: 11.1vw;
+}
+
+

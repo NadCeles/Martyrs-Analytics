@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { isLogged } from "../services/auth"
-import { Link, useNavigate } from "react-router-dom" 
+import { Link, useNavigate } from "react-router-dom"
+import styles from "./header.module.css"
+
 
 export const Header = () => {
     const [logged, setLogged] = useState(isLogged);
@@ -14,14 +16,38 @@ export const Header = () => {
 
     return (
         <>
-            <label>Martyrs</label>
-            <a href="">Trailer</a>
-            <a href="">The Game</a>
-            <a href="">Media</a>
-            <a href="">Newsletter</a>
-            <Link to="/stats">Stats</Link>
-            <a href="">Buy</a>
-            { logged ? <button onClick={signOut}>Sign Out</button> : <Link to="/login">Sign In</Link> }
+            <div className={styles.topBar}>
+                <Link to="/">
+                    <div className={styles.gameLogo} />
+                </Link>
+                <div className={styles.container}>
+                    <Link to="/#trailer-section">
+                        <div>TRAILER</div>
+                    </Link>
+                    <Link to="/#game-section">
+                        <div>GAME</div>
+                    </Link>
+                    <Link to="/#media-section">
+                        <div>MEDIA</div>
+                    </Link>
+                    <Link to="/#newsletter-section">
+                        <div>NEWSLETTER</div>
+                    </Link>
+                    <Link to="/stats">
+                        <div>STATS</div>
+                    </Link>
+                    {logged ?
+                        <Link to="/profile">
+                            <div>PROFILE</div>
+                        </Link> :
+                        null   
+                    }
+                </div>
+                {logged ?
+                    <button className={styles.loginRegisterButton} onClick={signOut}>Sign Out</button> :
+                    <Link className={styles.loginRegisterButton} to="/login">LOGIN / REGISTER</Link>
+                }
+            </div>
         </>
     )
 }

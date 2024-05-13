@@ -13,6 +13,7 @@ import { isLogged } from '../services/auth';
 import { getPublicEnemyKills } from '../services/analytics';
 import { AnalyticsSignUpCallToAction } from "./analyticsSignUpCallToAction";
 import { EnemiesAnalyticsPrivate } from './enemiesAnalyticsPrivate';
+import styles from "../pages/Analytics/analytics-page.module.css";
 
 ChartJS.register(
     CategoryScale,
@@ -46,35 +47,60 @@ export const EnemiesAnalytics = () => {
 
     return (
         <>
-            <h1>Enemies Stats</h1>
-            <section id="enemies-analytics-public">
-                <Bar
-                    options={{
-                        indexAxis: 'y',
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'left'
+            <div className={styles.card}>
+                <h1>Enemy Kills</h1>
+                <section className={styles.enemiesPublic} id="enemies-analytics-public">
+                    <Bar
+                        options={{
+                            indexAxis: 'y',
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                    position: 'left',
+                                },
+                                title: {
+                                    display: false,
+                                    text: 'Enemy Kills',
+                                    color: 'rgba(255, 255, 255, 1)',
+                                    align: 'center',
+                                    font:{
+                                        size: 30
+                                    },
+                                },
                             },
-                            title: {
-                                display: true,
-                                text: 'Enemy Kills'
+                            scales:{
+                                y:{
+                                    ticks:{
+                                        color: 'rgba(255, 255, 255, 1)',
+                                        font:{
+                                            size: 20,
+                                        }
+                                    },
+                                },
+                                x:{
+                                    ticks:{
+                                        color:'rgba(255, 255, 255, 1)',
+                                    }
+                                }
                             }
-                        }
-                    }}
-                    data={{
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: 'Enemy Kills',
-                                data: data,
-                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                            }
-                        ]
-                    }}
-                >
-                </Bar>
-            </section>
+                        }}
+                        data={{
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Enemy Kills',
+                                    data: data,
+                                    backgroundColor: 'rgba(241, 162, 8, 0.9)',
+                                    barThickness:40,
+                                }
+                            ]
+                        }}
+                    >
+                    </Bar>
+                </section>
+            </div>
+            
             {
                 loggedIn ?
                     <EnemiesAnalyticsPrivate></EnemiesAnalyticsPrivate> :

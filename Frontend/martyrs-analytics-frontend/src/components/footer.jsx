@@ -1,14 +1,27 @@
-export const Footer = () => {
+import { Link } from "react-router-dom"
+import { FunctionComponent } from 'react';
+import styles from './footer.module.css';
+import studioLogo from "../assets/images/logos/logo_positivo_png.png"
+import youtubeLogo from "../assets/images/media/youtube_icon.png"
+import twitterLogo from "../assets/images/media/twitter_icon.png"
 
+
+
+
+export const Footer = () => {
     return (
-        <>
-            <label>Games On Estrogen</label>
-            <a href="">Trailer</a>
-            <a href="">The Game</a>
-            <a href="">Media</a>
-            <a href="">Newsletter</a>
-            <a href="">Stats</a>
-            <a href="">Buy</a>
-        </>
+        <div className={styles.footer}>
+            <img src={studioLogo} className={styles.footerLogo}></img>
+            <div className={styles.container}>
+                <div>EULA</div>
+                <div>COOKIE POLICY</div>
+                <div>SITE TERMS</div>
+                <div>PRIVACY POLICY</div>
+            </div>
+            <div className={styles.socialContainer}>
+                <img src={youtubeLogo} className={styles.footerSocial}/>
+                <img src={twitterLogo} className={styles.footerSocial}/>
+            </div>
+        </div>
     )
 }

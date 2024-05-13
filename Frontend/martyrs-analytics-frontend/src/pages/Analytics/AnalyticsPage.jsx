@@ -4,6 +4,7 @@ import { EnemiesAnalytics } from "../../components/enemiesAnalytics";
 import { ChestsAnalytics } from "../../components/chestsAnalytics";
 import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
+import style from "./analytics-page.module.css";
 
 export const Analytics = () => {
     const [milestonesClicked, setMilestonesClicked] = useState(true)
@@ -30,15 +31,26 @@ export const Analytics = () => {
 
     return (
         <>
-            <Header></Header>
-            <h1>Analytics Page</h1>
-            <button onClick={onClickMilestones}>Milestones</button>
-            <button onClick={OnClickEnemies}>Enemies</button>
-            <button onClick={onClickChests}>Chests</button>
-            { milestonesClicked ? <MilestonesAnalytics></MilestonesAnalytics> : null }
-            { enemiesClicked ? <EnemiesAnalytics></EnemiesAnalytics> : null}
-            { chestsClicked ? <ChestsAnalytics> </ChestsAnalytics> : null}
-            <Footer></Footer>
+            <div className={style.analyticsPage}>
+                <Header></Header>
+                <div className={style.container}>
+                    
+                    <div className={style.cardSelector}>
+                        <h1>Stats Categories</h1>
+                        <div className={style.buttonContainer}>
+                            <button className={style.buttonSelector} onClick={onClickMilestones}>Milestones</button>
+                            <button className={style.buttonSelector} onClick={OnClickEnemies}>Enemies</button>
+                            <button className={style.buttonSelector} onClick={onClickChests}>Chests</button>
+                        </div>
+                    </div>
+                    
+                    { milestonesClicked ? <MilestonesAnalytics></MilestonesAnalytics> : null }
+                    { enemiesClicked ? <EnemiesAnalytics></EnemiesAnalytics> : null}
+                    { chestsClicked ? <ChestsAnalytics> </ChestsAnalytics> : null}
+                </div>
+                
+                <Footer></Footer>
+            </div>
         </>
     );
 };

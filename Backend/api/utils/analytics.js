@@ -29,13 +29,13 @@ async function getMilestoneAnalytics() {
                 })
                 break;
             case 'Boss':
-                analytics.push({
+                analytics.bosses.push({
                     'name': milestones[i].name,
                     'character_completion_percentage': (milestone_events_by_milestone.count / characters.count) * 100
                 })
                 break;
             case 'Unique Item':
-                analytics.push({
+                analytics.unique_items.push({
                     'name': milestones[i].name,
                     'character_completion_percentage': (milestone_events_by_milestone.count / characters.count) * 100
                 })
@@ -56,7 +56,6 @@ async function getChestCompletionPercentageAnalytics() {
     const analytics = [];
 
     for (let i = 0; i < zones.length; i++) {
-        console.log(zones[i].id)
         const chest_events = await Chest_event.findAndCountAll({
             distinct: true,
             col: 'characterId',

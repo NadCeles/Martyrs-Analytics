@@ -9,12 +9,13 @@ const morgan = require('morgan')
 async function checkAndSyncMySQL() {
 	await checkConnection()
 	addRelationsToModels()
-	await syncModels('alter')
+	await syncModels('force')
 }
 
 const corsOptions = {
     credentials: true,
-    origin: ['http://localhost:5173', 'http://localhost:8000'] // Whitelist the domains you want to allow
+    origin: ['http://localhost:5173', 'http://martyrs-the-way-down.com', 'http://api.martyrs-the-way-down.com', /\.martyrs-the-way-down\.com$/], // Whitelist the domains you want to allow
+	optionsSuccessStatus: 200
 };
 
 function initializeAndListenWithExpress() {
@@ -23,7 +24,6 @@ function initializeAndListenWithExpress() {
 		.use(morgan('dev'))
 		.use(express.json())
 		.use('/api', require('./api/routes'))
-
 		.listen(process.env.PORT, () => {
 			console.log(`> Listening on port: ${process.env.PORT}`)
 		})

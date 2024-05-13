@@ -19,18 +19,22 @@ ChartJS.register(
 );
 import { Bar } from 'react-chartjs-2';
 import { getMilestonesReachedByUser, getUserCharacters } from "../services/analytics";
+import styles from "../pages/Analytics/analytics-page.module.css";
+
 
 export const MilestonesAnalyticsPrivate = () => {
     const [labels, setLabels] = useState([]);
     const [data, setData] = useState({});
     const [characters, setCharacters] = useState([]);
     const [chartType, setChartType] = useState("Zones");
+    const [selectedCharacterId, setSelectedCharacterId] = useState(0)
 
     useEffect(() => {
         const getCharacters = async () => {
             const retrievedCharacters = await getUserCharacters();
             setCharacters(retrievedCharacters);
             await updateChartWithCharacterInfo(retrievedCharacters[0].id);
+            setSelectedCharacterId(retrievedCharacters[0].id)
         }
         getCharacters();
     }, []);
@@ -49,7 +53,7 @@ export const MilestonesAnalyticsPrivate = () => {
 
     const makeCharacterButton = (data) => {
         return (
-            <button
+            <button className={styles.buttonSelector}
                 key={"character-button-" + data.id}
                 onClick={() => clickCharacterButton(data.id)}
             >
@@ -59,52 +63,77 @@ export const MilestonesAnalyticsPrivate = () => {
     }
 
     const clickCharacterButton = (id) => {
-        updateChart(id);
+        setSelectedCharacterId(id);
+        updateChartWithCharacterInfo(id);
     }
 
     const onClickMilestonesButton = (type) => {
         setChartType(type);
-        updateChart();
+        updateChartWithCharacterInfo(selectedCharacterId);
     }
 
     return (
         <>
-            <section id="character-button-container">
-                {characters.map(makeCharacterButton, this)}
+            <section className={styles.cardSelector} id="character-button-container">
+                <h1>Characters</h1>
+                { Array.isArray(characters) ? characters.map(makeCharacterButton, this) : <p>Error characters not accesible</p>}
             </section>
-            <section id="milestone-selector">
-                <button id="zone-button" onClick={() => onClickMilestonesButton("Zone")}>Zone</button>
-                <button id="bosses-button" onClick={() => onClickMilestonesButton("Boss")}>Bosses</button>
-                <button id="unique-items-button" onClick={() => onClickMilestonesButton("Unique Item")}>Unique Items</button>
-            </section>
-            <section id="milestones-reached-bar">
-                <Bar
-                    options={{
-                        indexAxis: 'y',
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'left'
+            <div className={styles.cardSelector}>
+                <h1>Milestone Selector</h1>
+                <section className={styles.buttonContainer} id="milestone-selector">
+                    <button className={styles.buttonSelector} id="zone-button" onClick={() => onClickMilestonesButton("Zone")}>Zone</button>
+                    <button className={styles.buttonSelector} id="bosses-button" onClick={() => onClickMilestonesButton("Boss")}>Bosses</button>
+                    <button className={styles.buttonSelector} id="unique-items-button" onClick={() => onClickMilestonesButton("Unique Item")}>Unique Items</button>
+                </section>
+            </div>
+            <div className={styles.card}>
+                <h1>Milestones Reached by Character</h1>
+                <section className={styles.milestonePublic} id="milestones-reached-bar">
+                    <Bar
+                        options={{
+                            indexAxis: 'y',
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                    position: 'left'
+                                },
+                                title: {
+                                    display: false,
+                                    text: 'Enemy Kills'
+                                }
                             },
-                            title: {
-                                display: true,
-                                text: 'Enemy Kills'
+                            scales:{
+                                y:{
+                                    ticks:{
+                                        color: 'rgba(255, 255, 255, 1)',
+                                        font:{
+                                            size: 20,
+                                        }
+                                    },
+                                },
+                                x:{
+                                    ticks:{
+                                        color:'rgba(255, 255, 255, 1)',
+                                    }
+                                }
                             }
-                        }
-                    }}
-                    data={{
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: 'Enemy Kills',
-                                data: data,
-                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                            }
-                        ]
-                    }}
-                >
-                </Bar>
-            </section>
+                        }}
+                        data={{
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Enemy Kills',
+                                    data: data,
+                                    backgroundColor: 'rgba(241, 162, 8, 0.9)',
+                                    barThickness:40,
+                                }
+                            ]
+                        }}
+                    >
+                    </Bar>
+                </section>
+            </div>
         </>
     )
 }

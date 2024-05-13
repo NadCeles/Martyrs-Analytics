@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import styles from "../pages/Analytics/analytics-page.module.css";
 
 export const AnalyticsSignUpCallToAction = () => {
     const navigator = useNavigate();
@@ -9,9 +10,9 @@ export const AnalyticsSignUpCallToAction = () => {
 
     return (
         <>
-            <section>
+            <section className={styles.cardSelector}>
                 <h1>Log In to See Your Stats</h1>
-                <button onClick={onLoginClicked}>Sign In</button>
+                <button className={styles.buttonSelector} onClick={onLoginClicked}>Sign In</button>
             </section>
         </>
     )
